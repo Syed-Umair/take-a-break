@@ -2,7 +2,7 @@
 	"name": "take-a-break",
 	"displayName": "Take a Break",
 	"description": "It's nice to deep dive into programming but you gotta take a break sometimes to prevent your brain from crashing.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"engines": {
 		"vscode": "^1.46.0"
 	},

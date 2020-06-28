@@ -10,10 +10,10 @@ export function activate(context: vscode.ExtensionContext) {
       value: '30',
       validateInput: (val) => {
         let parsedVal = parseInt(val, 10);
-        if (parsedVal && parsedVal >= 5 && parsedVal <= 90) {
+        if (parsedVal && parsedVal >= 15 && parsedVal <= 300) {
           return null;
         }
-        return 'Please Enter a valid integer between 30 and 300';
+        return 'Please Enter a valid integer between 15 and 300';
       },
 			ignoreFocusOut: true,
 			prompt: 'How many minutes later would you like to take a break?',
@@ -35,9 +35,12 @@ export function activate(context: vscode.ExtensionContext) {
 
   let stopCmd = vscode.commands.registerCommand('take-a-break.turnOffReminderForBreak', () => {
     clearActiveJobs();
+    context.globalState.update('reminderForBreak:mins', null);
+    vscode.window.showInformationMessage(`Reminders to take break purged!`);
   });
 
-	context.subscriptions.push(startCmd);
+  context.subscriptions.push(startCmd);
+  context.subscriptions.push(stopCmd);
 }
 
 export function deactivate() {
